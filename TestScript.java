@@ -9,12 +9,21 @@ public class TestScript {
 	}
 
 	private void launch() {
-	
-		System.out.println("Started TestScript!");
-		Object myObject = new Object();
-		ErrorMessage testError = ErrorMessage.NO_ERROR();
 		
-		System.out.println(testError);
+		System.out.println("");
+		System.out.println("===================");
+		System.out.println("Started TestScript!");
+		System.out.println("===================");
+		
+		Object myObject = new Object();
+		ReturnObject myObjectReturned = new ReturnObjectImpl(myObject);
+
+		
+		
+		System.out.println(myObjectReturned.hasError());
+		System.out.println(myObjectReturned.getError());
+		System.out.println(myObjectReturned.getReturnValue());
+
 	
 	}
 }

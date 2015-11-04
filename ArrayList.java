@@ -9,7 +9,7 @@ public class ArrayList implements List {
 	/**
 	* Set the size of the array
 	*/
-	private int objArraySize = 10;
+	private int objArraySize = 0;
 	
 	
 	/**
@@ -46,65 +46,66 @@ public class ArrayList implements List {
 	}
 	
 	
-	/**
-	 * Returns the elements at the given position and removes it
-	 * from the list. The indeces of elements after the removed
-	 * element must be updated accordignly.
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * @param index the position in the list of the item to be retrieved
-	 * @return the element or an appropriate error message, 
-	 *         encapsulated in a ReturnObject
-	 */
 	public ReturnObject remove(int index) {
 		
-	}
-
+		ReturnObject objReturned;
+		
+		if (index < 0 || index >= size()) {
+			objReturned = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			objReturned = new ReturnObjectImpl(objArray[index]);
+		}
+		
+		/**
+		*Rebuild the objArray excluding removed Object.
+		*/
+		for (int i = index; i < size(); i++) {
+			objArray[i] = objArray[i+1];
+		}
+		
+		return objReturned;
+		
+	}	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**
-	 * Adds an element to the list, inserting it at the given
-	 * position. The indeces of elements at and after that position
-	 * must be updated accordignly.
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * If a null object is provided to insert in the list, the
-	 * request must be ignored and an appropriate error must be
-	 * returned.
-	 * 
-	 * @param index the position at which the item should be inserted in
-	 *              the list
-	 * @param item the value to insert into the list
-	 * @return an ReturnObject, empty if the operation is successful
-	 *         or containing an appropriate error message otherwise
-	 */
 	public ReturnObject add(int index, Object item)	{
-		return null;
+		
+		ReturnObject objReturned;
+		
+		if (index < 0 || index >= size()) {
+			objReturned = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (item == null) {
+			objReturned = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			/**
+			*The empty return object we'll return as we haven't errored
+			*/
+			objReturned = new ReturnObjectImpl(null);
+			
+			
+			/**
+			* Increase the array size by 1 so we have space
+			*/
+			Object[] tempArray = new Object[size()+1];
+			
+			/**
+			* Increase the index by 1 for items after where we add.
+			*/
+			for (int i = size(); i > index; i-- ) {
+				tempArray[i] = tempArray[i+1];
+			}
+		
+			/**
+			* Add the new element
+			*/
+			tempArray[index] = item;
+			objArray = tempArray;
+			}
+	
+			return objReturned;
 	}
-
+	
+	
 	/**
 	 * Adds an element at the end of the list.
 	 * 

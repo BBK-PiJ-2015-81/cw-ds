@@ -31,10 +31,13 @@ public class ReturnObjectImpl implements ReturnObject {
 	*/
 	public ReturnObjectImpl(Object objReturned) {
 		this.objReturned = objReturned;
+		errorReturned = ErrorMessage.NO_ERROR;
 	}
 	
 	
 	public boolean hasError(){
+		
+		
 		if (errorReturned.equals(ErrorMessage.NO_ERROR)) {
 			return false;
 		} else {
@@ -55,6 +58,4 @@ public class ReturnObjectImpl implements ReturnObject {
 			return objReturned;
 		}
 	}
-	
-	
 }
