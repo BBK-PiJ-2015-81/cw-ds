@@ -12,7 +12,7 @@ public class TestScript {
 	
 		System.out.println("Started TestScript!");
 		Object myObject = new Object();
-		ErrorMessage testError = ErrorMessage.NO_ERROR;
+		ErrorMessage testError = ErrorMessage.NO_ERROR();
 		
 		System.out.println(testError);
 	

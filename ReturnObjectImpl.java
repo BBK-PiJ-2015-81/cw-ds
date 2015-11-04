@@ -5,15 +5,33 @@
 
 public class ReturnObjectImpl implements ReturnObject {
 	
+	
 	/**
 	* The error message returned.
 	*/
 	private ErrorMessage errorReturned;
 	
+	
 	/**
 	* The object returned if we don't error.
 	*/
 	private Object objReturned;
+	
+	
+	/**
+	* Constructor for ErrorMessages.
+	*/
+	public ReturnObjectImpl(ErrorMessage errorReturned) {
+		this.errorReturned = errorReturned;
+	}
+	
+	
+	/**
+	* Constructor for Objects.
+	*/
+	public ReturnObjectImpl(Object objReturned) {
+		this.objReturned = objReturned;
+	}
 	
 	
 	public boolean hasError(){
@@ -36,8 +54,6 @@ public class ReturnObjectImpl implements ReturnObject {
 		} else {
 			return objReturned;
 		}
-	
-		
 	}
 	
 	
