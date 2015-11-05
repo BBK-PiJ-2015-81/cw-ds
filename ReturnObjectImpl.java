@@ -36,8 +36,6 @@ public class ReturnObjectImpl implements ReturnObject {
 	
 	
 	public boolean hasError(){
-		
-		
 		if (errorReturned.equals(ErrorMessage.NO_ERROR)) {
 			return false;
 		} else {

@@ -106,18 +106,30 @@ public class ArrayList implements List {
 	}
 	
 	
-	/**
-	 * Adds an element at the end of the list.
-	 * 
-	 * If a null object is provided to insert in the list, the
-	 * request must be ignored and an appropriate error must be
-	 * returned.
-	 * 
-	 * @param item the value to insert into the list
-	 * @return an ReturnObject, empty if the operation is successful
-	 *         or containing an appropriate error message otherwise
-	 */
 	public ReturnObject add(Object item){
-		return null;
+		
+		ReturnObject objReturned;
+		
+		if (item.equals(null)) {
+			objReturned = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			/**
+			*The empty return object we'll return as we haven't errored
+			*/
+			objReturned = new ReturnObjectImpl(null);
+			
+			/**
+			* Increase the array size by 1 so we have space
+			*/
+			Object[] tempArray = new Object[size()+1];
+			
+			/**
+			* Add the new element to the final index
+			*/
+			tempArray[size()-1] = item;
+			objArray = tempArray;
+		}
+		
+		return objReturned;
 	}
 }
