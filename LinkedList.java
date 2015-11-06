@@ -1,5 +1,5 @@
 /**
-* Implementation of List Interface based on pointers called LinkedList.
+* Implementation of List Interface based on pointers.
 * @author abrait02 BBK-PiJ-2015-81
 */
 
@@ -27,6 +27,7 @@ public class LinkedList implements List {
 
 	public ReturnObject get(int index){
 		
+		//Not sure why this objReturned needs to be initialised when the others didn't. Investigate.
 		ReturnObject objReturned = null;
 		
 		if (isEmpty() == true){
@@ -41,30 +42,48 @@ public class LinkedList implements List {
 			} else {
 				ListNode tempNode = firstItem;
 				for (int i = 0; i < index; i++){
-					// move to the next ListNode and update my position in the list.
+					
+					// move through the list.
 					tempNode = tempNode.getNext();
 					objReturned = new ReturnObjectImpl(tempNode);
 				}
-			}			
-		}
+			} 			
+		} 
 		return objReturned;
 	}
 	
 	
-	/**
-	 * Returns the elements at the given position and removes it
-	 * from the list. The indeces of elements after the removed
-	 * element must be updated accordignly.
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * @param index the position in the list of the item to be retrieved
-	 * @return the element or an appropriate error message, 
-	 *         encapsulated in a ReturnObject
-	 */
 	public ReturnObject remove(int index){
-		return null;
+		
+		ReturnObject objReturned;
+		
+		if (index < 0 || index >= size()) {
+			objReturned = new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			objReturned = get(index);
+			// If we remove the only object reset firstItem, lastItem.
+			if (size() == 1) {
+				firstItem = null; 
+				lastItem = null;
+			} else {
+				//Move to one item before the item being removed.
+				ListNode tempNode = firstItem;
+				for (int i = 0; i < (index - 1); i++) {
+					tempNode = tempNode.getNext();
+				}
+				// If the item being removed is the lastItem, make the one before the new lastItem;
+				if (tempNode.getNext().getNext() == null){
+					tempNode.setNext(null);
+				} else {
+				// Point the item before the item being removed to the item after that.	
+					tempNode.setNext(tempNode.getNext().getNext());
+				}
+			}
+		}
+		// Update the list size as we removed an item.
+		listSize = listSize - 1;
+		return objReturned;
+		
 	}
 
 	/**

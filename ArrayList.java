@@ -1,5 +1,5 @@
 /**
-* Implementation of List Interface based on arrays called ArrayList.
+* Implementation of List Interface based on arrays.
 * @author abrait02 BBK-PiJ-2015-81
 */
 
@@ -16,6 +16,10 @@ public class ArrayList implements List {
 	* The array of Objects.
 	*/
 	private Object[] objArray = new Object[objArraySize];
+	
+	/**
+	* Methods
+	*/
 	
 	public boolean isEmpty() {
 		if (objArray.length == 0) {
