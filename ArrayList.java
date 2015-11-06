@@ -1,5 +1,5 @@
 /**
-* Implementation of List Interface
+* Implementation of List Interface based on arrays called ArrayList.
 * @author abrait02 BBK-PiJ-2015-81
 */
 
@@ -110,7 +110,7 @@ public class ArrayList implements List {
 		
 		ReturnObject objReturned;
 		
-		if (item.equals(null)) {
+		if (item == null) {
 			objReturned = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			/**
