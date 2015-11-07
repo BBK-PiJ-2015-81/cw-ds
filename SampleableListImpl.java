@@ -1,10 +1,10 @@
 /**
-* Implementation of SampleableList Interface.
+* Implementation of SampleableList Interface, extending ArrayList to pick up methods.
 * @author abrait02 BBK-PiJ-2015-81
 */
 
 public class SampleableListImpl extends ArrayList implements SampleableList {
-// Extend ArrayList to pick up methods.
+
 
 
 	public SampleableList sample(){
