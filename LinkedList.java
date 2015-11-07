@@ -97,7 +97,7 @@ public class LinkedList implements List {
 			objReturned = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			ListNode positionNode = null;
-			ListNode addedNode = null;
+			ListNode addedNode = new ListNode(item);
 			
 			if (isEmpty() == true) {
 				firstItem = addedNode;
@@ -126,7 +126,7 @@ public class LinkedList implements List {
 	public ReturnObject add(Object item){
 		
 		ReturnObject objReturned = null;
-		ListNode addedNode = null;
+		ListNode addedNode = new ListNode(item);
 		
 		if (item == null) {
 			objReturned = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);

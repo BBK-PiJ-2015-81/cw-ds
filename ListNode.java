@@ -4,6 +4,11 @@ class ListNode {
 	private ListNode next = null;
 	private ListNode prev = null;
 	
+	// Constructor to take Objects
+	public ListNode(Object info) {
+		this.info = info;
+	}
+	
 	//Setters and Getters
 	
 	public void setInfo(Object info) {
