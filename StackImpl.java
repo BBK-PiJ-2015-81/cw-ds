@@ -15,5 +15,49 @@ public class StackImpl extends AbstractStack {
 		super(list);
 	}
 	
+
+	public boolean isEmpty() {
+		if (internalList.isEmpty() == true){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public int size() {
+		return internalList.size();
+	}
+
 	
+	public void push(Object item) {
+		internalList.add(item);
+	}
+
+
+	public ReturnObject top(){
+		
+		ReturnObject objReturned = null;
+		
+		if (internalList.isEmpty() == true){
+			objReturned = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+		// Pick up the element with the highest index, i.e. the last one added at the end
+			objReturned = new ReturnObjectImpl(internalList.get(internalList.size() - 1).getReturnValue());
+		}
+		return objReturned;
+	}
+
+
+	public ReturnObject pop(){
+		
+		ReturnObject objReturned = null;
+		
+		if (internalList.isEmpty() == true){
+			objReturned = new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+			new ReturnObjectImpl(internalList.remove(internalList.size() - 1).getReturnValue());
+		}
+		return objReturned;
+	}
 }
