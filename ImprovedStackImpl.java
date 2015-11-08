@@ -5,7 +5,7 @@
 
 public class ImprovedStackImpl implements ImprovedStack {
 	
-	private List internalList;
+	protected List internalList;
 	
 	//Constructor
 	
@@ -14,19 +14,20 @@ public class ImprovedStackImpl implements ImprovedStack {
     }
 	
 	
-	/**
-	 * Returns a copy of this stack with the items reversed, the top
-	 * elements on the original stack is at the bottom of the new
-	 * stack and viceversa.
-	 * 
-	 * @return a copy of this stack with the items reversed. 
-	 */
 	public ImprovedStack reverse(){
 		
-		return null;
+		List tempList = new ArrayList();
 		
+		ImprovedStackImpl reverseStack = new ImprovedStackImpl(tempList);
+		// Start at the top of the stack and build a new one with 
+		// the old top being the new bottom.
+		for (int i = (internalList.size() - 1); i >= 0; i--) {
+			reverseStack.push(internalList.get(i).getReturnValue());
+		}
+		return reverseStack;
 	}
 
+	
 	/**
 	 * Removes the given object from the stack if it is
 	 * there. Multiple instances of the object are all removed.
@@ -37,18 +38,23 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @param object the object to remove
 	 */
 	public void remove(Object object) {
-		
+		// Check if the object being removed exists at each index
+		for ( int i = 0; i < internalList.size(); i++) {
+			if (internalList.get(i).getReturnValue().equals(object)) {
+				// if we find the object being removed, 
+				// use the remove method to delete it cleanly
+				internalList.remove(i);
+			} else {
+				// just move on to checking the next index
+				i++;			
+			}
+		}
 		
 		
 	}
+		
 	
-	
-	
-	
-	
-	
-	
-	// Implemented Stack Methods from StackImpl
+	// Implemented Stack Methods from StackImpl.
 	
 	public boolean isEmpty() {
 		if (internalList.isEmpty() == true){
